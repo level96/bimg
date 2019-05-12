@@ -25,6 +25,8 @@ const (
 	SVG
 	// MAGICK represents the libmagick compatible genetic image type.
 	MAGICK
+	// HIEF
+	HEIF
 )
 
 // ImageType represents an image type value.
@@ -45,6 +47,7 @@ var ImageTypes = map[ImageType]string{
 	PDF:    "pdf",
 	SVG:    "svg",
 	MAGICK: "magick",
+	HEIF:   "heif",
 }
 
 // imageMutex is used to provide thread-safe synchronization

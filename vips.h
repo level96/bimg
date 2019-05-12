@@ -32,7 +32,8 @@ enum types {
 	GIF,
 	PDF,
 	SVG,
-	MAGICK
+	MAGICK,
+	HEIF,
 };
 
 typedef struct {
@@ -173,6 +174,9 @@ vips_type_find_save_bridge(int t) {
 	if (t == JPEG) {
 		return vips_type_find("VipsOperation", "jpegsave_buffer");
 	}
+	if (t == HEIF) {
+		return vips_type_find("VipsOperation", "heifsave_buffer");
+	}
 	return 0;
 }
 
@@ -284,6 +288,16 @@ vips_jpegsave_bridge(VipsImage *in, void **buf, size_t *len, int strip, int qual
 		NULL
 	);
 }
+
+int
+vips_hiefsave_bridge(VipsImage *in, void **buf, size_t *len, int quality, int lossless) {
+	return vips_heifsave_buffer(in, buf, len,
+		"Q", quality,
+		"lossless", INT_TO_GBOOLEAN(lossless),
+		NULL
+	);
+}
+
 
 int
 vips_pngsave_bridge(VipsImage *in, void **buf, size_t *len, int strip, int compression, int quality, int interlace) {
