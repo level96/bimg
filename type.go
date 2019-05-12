@@ -27,6 +27,8 @@ const (
 	MAGICK
 	// HIEF
 	HEIC
+	// Jpeg 2000
+	J2K
 )
 
 // ImageType represents an image type value.
