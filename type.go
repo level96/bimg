@@ -48,6 +48,7 @@ var ImageTypes = map[ImageType]string{
 	SVG:    "svg",
 	MAGICK: "magick",
 	HEIC:   "heic",
+	J2K:    "j2k",
 }
 
 // imageMutex is used to provide thread-safe synchronization
