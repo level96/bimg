@@ -204,8 +204,8 @@ func VipsIsTypeSupportedSave(t ImageType) bool {
 	if t == TIFF {
 		return int(C.vips_type_find_save_bridge(C.TIFF)) != 0
 	}
-	if t == HEIF {
-		return int(C.vips_type_find_save_bridge(C.HEIF)) != 0
+	if t == HEIC {
+		return int(C.vips_type_find_save_bridge(C.HEIC)) != 0
 	}
 	return false
 }
@@ -434,7 +434,7 @@ func vipsSave(image *C.VipsImage, o vipsSaveOptions) ([]byte, error) {
 		saveErr = C.vips_pngsave_bridge(tmpImage, &ptr, &length, strip, C.int(o.Compression), quality, interlace)
 	case TIFF:
 		saveErr = C.vips_tiffsave_bridge(tmpImage, &ptr, &length)
-	case HEIF:
+	case HEIC:
 		saveErr = C.vips_hiefsave_bridge(tmpImage, &ptr, &length, quality, lossless)
 	default:
 		saveErr = C.vips_jpegsave_bridge(tmpImage, &ptr, &length, strip, quality, interlace)
@@ -636,8 +636,8 @@ func vipsImageType(buf []byte) ImageType {
 	if IsTypeSupported(SVG) && IsSVGImage(buf) {
 		return SVG
 	}
-	if IsTypeSupported(HEIF) {
-		return HEIF
+	if IsTypeSupported(HEIC) {
+		return HEIC
 	}
 	if IsTypeSupported(MAGICK) && strings.HasSuffix(readImageType(buf), "MagickBuffer") {
 		return MAGICK

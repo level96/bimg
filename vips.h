@@ -33,7 +33,7 @@ enum types {
 	PDF,
 	SVG,
 	MAGICK,
-	HEIF,
+	HEIC,
 };
 
 typedef struct {
@@ -174,7 +174,7 @@ vips_type_find_save_bridge(int t) {
 	if (t == JPEG) {
 		return vips_type_find("VipsOperation", "jpegsave_buffer");
 	}
-	if (t == HEIF) {
+	if (t == HEIC) {
 		return vips_type_find("VipsOperation", "heifsave_buffer");
 	}
 	return 0;
