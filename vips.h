@@ -311,7 +311,7 @@ vips_hiefsave_bridge(VipsImage *in, void **buf, size_t *len, int quality, int lo
 int
 vips_magicksave_bridge(VipsImage *in, void **buf, size_t *len, int quality) {
 	return vips_magicksave_buffer(in, buf, len,
-		"Q", quality,
+		"quality", quality,
 		"format", "J2K",
 		NULL
 	);

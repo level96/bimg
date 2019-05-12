@@ -185,6 +185,12 @@ func VipsIsTypeSupported(t ImageType) bool {
 	if t == MAGICK {
 		return int(C.vips_type_find_bridge(C.MAGICK)) != 0
 	}
+	if t == HEIC {
+		return int(C.vips_type_find_save_bridge(C.HEIC)) != 0
+	}
+	if t == J2K {
+		return int(C.vips_type_find_save_bridge(C.J2K)) != 0
+	}
 	return false
 }
 
