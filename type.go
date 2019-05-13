@@ -28,7 +28,7 @@ const (
 	// HIEF
 	HEIC
 	// Jpeg 2000
-	J2K
+	JP2
 )
 
 // ImageType represents an image type value.
@@ -50,7 +50,7 @@ var ImageTypes = map[ImageType]string{
 	SVG:    "svg",
 	MAGICK: "magick",
 	HEIC:   "heic",
-	J2K:    "j2k",
+	JP2:    "jp2",
 }
 
 // imageMutex is used to provide thread-safe synchronization

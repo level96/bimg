@@ -188,8 +188,8 @@ func VipsIsTypeSupported(t ImageType) bool {
 	if t == HEIC {
 		return int(C.vips_type_find_save_bridge(C.HEIC)) != 0
 	}
-	if t == J2K {
-		return int(C.vips_type_find_save_bridge(C.J2K)) != 0
+	if t == JP2 {
+		return int(C.vips_type_find_save_bridge(C.JP2)) != 0
 	}
 	return false
 }
@@ -213,8 +213,8 @@ func VipsIsTypeSupportedSave(t ImageType) bool {
 	if t == HEIC {
 		return int(C.vips_type_find_save_bridge(C.HEIC)) != 0
 	}
-	if t == J2K {
-		return int(C.vips_type_find_save_bridge(C.J2K)) != 0
+	if t == JP2 {
+		return int(C.vips_type_find_save_bridge(C.JP2)) != 0
 	}
 	return false
 }
@@ -445,7 +445,7 @@ func vipsSave(image *C.VipsImage, o vipsSaveOptions) ([]byte, error) {
 		saveErr = C.vips_tiffsave_bridge(tmpImage, &ptr, &length)
 	case HEIC:
 		saveErr = C.vips_hiefsave_bridge(tmpImage, &ptr, &length, quality, lossless)
-	case J2K:
+	case JP2:
 		saveErr = C.vips_magicksave_bridge(tmpImage, &ptr, &length, quality)
 	default:
 		saveErr = C.vips_jpegsave_bridge(tmpImage, &ptr, &length, strip, quality, interlace)
@@ -650,8 +650,8 @@ func vipsImageType(buf []byte) ImageType {
 	if IsTypeSupported(HEIC) {
 		return HEIC
 	}
-	if IsTypeSupported(J2K) {
-		return J2K
+	if IsTypeSupported(JP2) {
+		return JP2
 	}
 	if IsTypeSupported(MAGICK) && strings.HasSuffix(readImageType(buf), "MagickBuffer") {
 		return MAGICK

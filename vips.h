@@ -34,7 +34,7 @@ enum types {
 	SVG,
 	MAGICK,
 	HEIC,
-	J2K
+	JP2
 };
 
 typedef struct {
@@ -161,7 +161,7 @@ vips_type_find_bridge(int t) {
 	if (t == HEIC) {
 		return vips_type_find("VipsOperation", "heifsave_buffer");
 	}
-	if (t == J2K) {
+	if (t == JP2) {
 		return vips_type_find("VipsOperation", "magicksave_buffer");
 	}
 	return 0;
@@ -184,7 +184,7 @@ vips_type_find_save_bridge(int t) {
 	if (t == HEIC) {
 		return vips_type_find("VipsOperation", "heifsave_buffer");
 	}
-	if (t == J2K) {
+	if (t == JP2) {
 		return vips_type_find("VipsOperation", "magicksave_buffer");
 	}
 	return 0;
@@ -312,7 +312,7 @@ int
 vips_magicksave_bridge(VipsImage *in, void **buf, size_t *len, int quality) {
 	return vips_magicksave_buffer(in, buf, len,
 		"quality", quality,
-		"format", "J2K",
+		"format", "JP2",
 		NULL
 	);
 }
